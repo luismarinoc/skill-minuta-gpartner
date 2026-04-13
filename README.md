@@ -7,7 +7,7 @@ Skill para Claude que genera minutas ejecutivas de **GPartner Consulting** a par
 - Lee el contenido de un documento ClickUp (transcripción de reunión)
 - Extrae asistentes, agenda, puntos tratados, acuerdos y próximos pasos
 - Genera un `.docx` profesional con:
-  - Logo GPartner embebido
+  - Logo GPartner leído desde `assets/logo_gpartner.jpg`
   - Colores corporativos (azul `#1B3A6B`, verde `#2D8A4E`, rojo `#C0392B`)
   - Tablas de asistentes, agenda y acuerdos con formato ejecutivo
   - Footer con numeración de páginas
@@ -18,7 +18,9 @@ Skill para Claude que genera minutas ejecutivas de **GPartner Consulting** a par
 skill-minuta-gpartner/
 ├── SKILL.md                    # Instrucciones para Claude
 ├── references/
-│   └── docx-template.md        # Script Node.js completo con logo embebido
+│   └── docx-template.md        # Script Node.js completo
+├── assets/
+│   └── logo_gpartner.jpg       # Logo GPartner
 └── README.md
 ```
 
@@ -27,6 +29,11 @@ skill-minuta-gpartner/
 ```bash
 git clone https://github.com/luismarinoc/skill-minuta-gpartner.git ~/.claude/skills/user/crearminutagpartnerc
 ```
+
+El logo se busca automáticamente en las siguientes rutas (en orden):
+1. `~/.claude/skills/user/crearminutagpartnerc/assets/logo_gpartner.jpg`
+2. `/mnt/skills/user/crearminutagpartnerc/assets/logo_gpartner.jpg`
+3. `/home/claude/skill-minuta-gpartner/assets/logo_gpartner.jpg`
 
 ## Uso
 
@@ -38,4 +45,4 @@ Compartir el link de un documento ClickUp a Claude y decir:
 
 - Node.js + `docx` npm package
 - ClickUp MCP (`clickup_list_document_pages`, `clickup_get_document_pages`)
-- Logo GPartner embebido en base64 (no requiere archivos externos)
+- Logo GPartner leído desde asset del repo (no base64 embebido)
